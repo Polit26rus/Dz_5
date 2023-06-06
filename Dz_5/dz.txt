@@ -1,0 +1,171 @@
+// Задача 34: Задайте массив заполненный случайными положительными трёхзначными числами. Напишите программу, которая покажет количество чётных чисел в массиве.
+// [345, 897, 568, 234] -> 2
+
+
+// int [] ArrayCreateAndInput3(int l){
+//     int [] array = new int[l];
+//     for(int i = 0;i < l;i++){
+//         Console.Write($"Введите {i + 1} элемент массива: ");
+//         array[i] = Convert.ToInt32(Console.ReadLine());
+//         while(array[i] < 100 || array[i] > 999){
+//             Console.Write("Ошибка,введите трёхзначное число: ");
+//             array[i] = Convert.ToInt32(Console.ReadLine());            
+//         }
+//     }
+//     return array;
+// }
+
+// Console.Write("Введите количество элементов вводимого вами массива: ");
+// int l = Convert.ToInt32(Console.ReadLine());
+// int [] mas = ArrayCreateAndInput3(l);
+
+
+// int NumberOfEven(int [] arr){
+//     int even = 0;
+//     for(int i = 0;i < arr.Length;i++){
+//         if(arr[i] % 2 == 0){
+//             even++;
+//         }
+//     }
+//     return even;
+// }
+
+// Console.WriteLine($"Количество чётных чисел вашего массива {NumberOfEven(mas)}");
+
+
+
+
+// Задача 35: Задайте одномерный массив из 123 случайных чисел. Найдите количество элементов массива, значения которых лежат в отрезке [10,99].
+// Пример для массива из 5, а не 123 элементов. В своём решении сделайте для 123
+// [5, 18, 123, 6, 2] -> 1
+// [1, 2, 3, 6, 2] -> 0
+// [10, 11, 12, 13, 14] -> 5
+
+// int [] arr = new int[123];
+// Random rand = new Random();
+// for(int i = 0;i < arr.Length;i++){
+//     arr[i] = rand.Next(-999,999);  // чтобы числа не были слишком широкие
+// }
+
+// int NumbOfEl(int [] arr){
+//     int num = 0;
+//     for(int i = 0; i < arr.Length;i++){
+//         if(arr[i] >= 10 & arr[i] <= 99){
+//             num++;
+//         }
+//     }
+//     return num;
+// }
+
+// Console.WriteLine($"Количество элементов,соответсвующее срезу [10;99] равно {NumbOfEl(arr)}");
+
+
+
+// Задача 36: Задайте одномерный массив, заполненный случайными числами. Найдите сумму элементов, стоящих на нечётных позициях.
+// [3, 7, 23, 12] -> 19
+// [-4, -6, 89, 6] -> 0
+
+// int [] ArrayCreate(int l){
+//     int [] array = new int[l];
+//     Random rand = new Random();
+//     for(int i = 0;i < l;i++){
+//         array[i] = rand.Next(-100,101);
+//     }
+//     return array;
+// }
+
+// int SumOfEl(int [] array){
+//     int sum = 0;
+//     for(int i = 0;i < array.Length;i++){
+//         if(array[i] % 2 != 0){
+//             sum += array[i];
+//         }
+//     }
+//     return sum;
+// }
+
+// Random rand = new Random();
+// int r = rand.Next(0,51);
+
+// Console.WriteLine($"Сумма массива из {r} элементов = {SumOfEl(ArrayCreate(r))}");
+
+
+// Задача 37: Найдите произведение пар чисел в одномерном массиве. Парой считаем первый и последний элемент,
+// второй и предпоследний и т.д. Результат запишите в новом массиве.
+// [1 2 3 4 5] -> 5 8 3
+// [6 7 3 6] -> 36 21
+
+// int [] ArrayCreateAndInput(int l){
+//     int [] array = new int[l];
+//     for(int i = 0;i < l;i++){
+//         Console.Write($"Введите {i + 1} элемент массива: ");
+//         array[i] = Convert.ToInt32(Console.ReadLine());
+//     }
+//     return array;
+// }
+
+// string ArrIndMultiplication(int [] array){
+//     int sum = 0;
+//     string sum_line = "";
+//     int i = 0;
+//     void ForBody(){
+//         sum = array[i] * array[array.Length - i - 1];
+//         if(i == array.Length - i - 1){
+//             sum = array[i];
+//         }
+//         sum_line += $"{Convert.ToString(sum)} ";
+//     }
+//     if(array.Length % 2 == 0){
+//         for(;i < array.Length / 2;i++){
+//             ForBody();
+//         }
+//     }
+//     else{
+//         for(;i < array.Length / 2 + 1;i++){
+//             ForBody();
+//         }
+//     }
+
+//     return sum_line;
+// }
+
+// Console.Write("Введите количество элементов вводимиого вами массива: ");
+// int l = Convert.ToInt32(Console.ReadLine());
+// int [] mas = ArrayCreateAndInput(l);
+
+// Console.WriteLine(ArrIndMultiplication(mas));
+
+
+// Задача 38: Задайте массив вещественных чисел. Найдите разницу между максимальным и минимальным элементов массива.
+// [3.22, 4.2, 1.15, 77.15, 65.2] => 77.15 - 1.15 = 76
+
+// double [] ArrayCreateAndInput(int l){
+//     double [] array = new double[l];
+//     for(int i = 0;i < l;i++){
+//         Console.Write($"Введите {i + 1} элемент массива: ");
+//         array[i] = Convert.ToDouble(Console.ReadLine());
+//     }
+//     return array;
+// }
+
+// double ArrayStuff(double [] array){
+//     double max = array[0];
+//     double min = array[0];
+
+//     for(int i = 1;i < array.Length;i++){
+//         if(max < array[i]){
+//             max = array[i];
+//         }
+//         else if(min > array[i]){
+//             min = array[i];
+//         }
+//     }
+//     double con = max - min;
+//     return con;
+// }
+
+// Console.Write("Введите количество элементов вводимиого вами массива: ");
+// int l = Convert.ToInt32(Console.ReadLine());
+// double [] mas = ArrayCreateAndInput(l);
+
+// Console.WriteLine(ArrayStuff(mas));
